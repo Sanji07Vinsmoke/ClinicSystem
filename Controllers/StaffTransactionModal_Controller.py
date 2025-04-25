@@ -139,7 +139,7 @@ class StaffTransactionModal(QMainWindow):
                     docFullname = f"{doctor['doc_lname'].capitalize()}, {doctor['doc_fname'].capitalize()}"
 
                 # Extract patient name and capitalize the first letter of each word
-                full_name = f"{patient['pat_lname'].capitalize()}, {patient['pat_fname'].capitalize()}"
+                full_name = f"{patient['last_name'].capitalize()}, {patient['first_name'].capitalize()}"
 
                 # Insert data into the table
                 self.ui.TransactionTable.insertRow(row)

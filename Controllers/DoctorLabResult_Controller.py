@@ -96,11 +96,24 @@ class DoctorLabResult(QMainWindow):
 
     def return_to_dashboard(self):
         try:
+            # Refresh the parent window if a refresh callback is provided
             if hasattr(self, 'refresh_callback') and callable(self.refresh_callback):
                 self.refresh_callback()
 
+            # Get the parent window (dashboard)
+            parent_window = self.parent()
+
             # Close the modal
             self.close()
+
+            # Bring the parent window back into focus
+            if parent_window:
+                parent_window.activateWindow()  # Restore focus to the parent window
+                parent_window.raise_()  # Bring the parent window to the front
+                print("Parent window brought back into focus.")
+            else:
+                print("Warning: Parent window not found. Unable to restore focus.")
+
         except Exception as e:
             print(f"Error while closing the modal: {e}")
             QMessageBox.critical(self, "Error", f"An error occurred while closing the modal: {e}")
@@ -506,19 +519,27 @@ class DoctorLabResult(QMainWindow):
             if self.refresh_callback:
                 self.refresh_callback()
 
-            # Close the modal
+            # Close the current window (DoctorLabResult)
             self.close()
 
             # Open or focus the DoctorRecords window
             self.open_or_focus_doctor_records()
 
+            # Close the parent window (DoctorDashboardController)
+            parent_window = self.parent()  # Get the parent window
+            if parent_window:
+                parent_window.close()  # Close the parent window
+                print("Parent window (DoctorDashboardController) closed successfully.")
+            else:
+                print("Warning: Parent window not found. Unable to close it.")
+
         except Exception as e:
-            print(f"Error during diagnosis: {e}")
-            QMessageBox.critical(self, "Error", f"Failed to save diagnosis: {e}")
+            print(f"Error during diagnosis confirmation: {e}")
+            QMessageBox.critical(self, "Error", f"An error occurred: {e}")
 
     def open_or_focus_doctor_records(self):
         from Controllers.DoctorRecords_Controller import DoctorRecords
-        app = QApplication.instance()  # Get the current application instance
+        app = QApplication.instance()
 
         # Check if any DoctorRecords window is already active
         for widget in app.topLevelWidgets():
@@ -527,7 +548,7 @@ class DoctorLabResult(QMainWindow):
                 doctor_records_window.activateWindow()
                 doctor_records_window.show()
                 print("DoctorRecords window is already active. Bringing it to focus.")
-                return  # Exit early since the window is already open
+                return
 
         # If no existing window is found, create a new one
         checkup_details = CheckUp.get_checkup_details(self.checkup_id)

@@ -1,10 +1,11 @@
 from PyQt5 import QtWidgets, QtCore
 from PyQt5.QtWidgets import QMainWindow
 from Views.Staff_TransactionList import Ui_MainWindow as StaffTransactionListUI
-from Models.Transaction import Transaction
+from Controllers.StaffViewTransaction_Controller import StaffViewTransaction
 from Models.Doctor import Doctor
 from Models.CheckUp import CheckUp
 from Models.Patient import Patient
+from Models.Transaction import Transaction
 
 class StaffTransactionList(QMainWindow):
     def __init__(self):
@@ -14,6 +15,9 @@ class StaffTransactionList(QMainWindow):
         self.apply_table_styles()
         self.load_transaction_details()
 
+        if hasattr(self.ui, 'ViewButton'):
+            print('ViewButton exist')
+            self.ui.ViewButton.clicked.connect(self.view_transaction)
 
     def apply_table_styles(self):
         """Apply custom styles to the tables."""
@@ -126,3 +130,46 @@ class StaffTransactionList(QMainWindow):
             print(f"Error loading transaction details: {e}")
             QtWidgets.QMessageBox.critical(self, "Error", f"Failed to load transaction details: {e}")
 
+    def view_transaction(self):
+        try:
+            # Get the currently selected row
+            selected_row = self.ui.TransactionTable.currentRow()
+            if selected_row == -1:
+                QtWidgets.QMessageBox.warning(
+                    self,
+                    "No Selection",
+                    "Please select a transaction to view."
+                )
+                return
+
+            # Retrieve the chck_id from the first column of the selected row
+            chck_id_item = self.ui.TransactionTable.item(selected_row, 0)
+            if not chck_id_item or not chck_id_item.text():
+                QtWidgets.QMessageBox.critical(
+                    self,
+                    "Error",
+                    "Failed to retrieve check-up ID from the selected row."
+                )
+                return
+
+            chck_id = chck_id_item.text().strip()
+
+            # Debug: Log the retrieved chck_id
+            print(f"Selected chck_id: {chck_id}")
+
+            # Ensure chck_id is a valid string
+            if not isinstance(chck_id, str) or not chck_id:
+                QtWidgets.QMessageBox.critical(
+                    self,
+                    "Error",
+                    "Invalid check-up ID retrieved from the selected row."
+                )
+                return
+
+            # Open the StaffViewTransaction modal with the selected chck_id
+            self.staff_transaction_view = StaffViewTransaction(chck_id=chck_id, parent=self)
+            self.staff_transaction_view.show()
+
+        except Exception as e:
+            print(f"Error while viewing transaction: {e}")
+            QtWidgets.QMessageBox.critical(self, "Error", f"An error occurred: {e}")

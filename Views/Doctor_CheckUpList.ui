@@ -126,7 +126,7 @@ QLabel {
           <enum>QLayout::SetNoConstraint</enum>
          </property>
          <item>
-          <widget class="QPushButton" name="pushButton_6">
+          <widget class="QPushButton" name="DashboardButton">
            <property name="text">
             <string>Dashboard</string>
            </property>
@@ -143,9 +143,9 @@ QLabel {
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_7">
+          <widget class="QPushButton" name="CheckUpButton">
            <property name="text">
-            <string>Records</string>
+            <string>Check Up</string>
            </property>
            <property name="icon">
             <iconset resource="../Images/resources.qrc">
@@ -161,8 +161,13 @@ QLabel {
          </item>
          <item>
           <widget class="QPushButton" name="pushButton_8">
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+	border: 2px solid white;
+}</string>
+           </property>
            <property name="text">
-            <string>Patients</string>
+            <string>Records</string>
            </property>
            <property name="icon">
             <iconset resource="../Images/resources.qrc">
@@ -343,50 +348,10 @@ QGraphicsView {
              <property name="bottomMargin">
               <number>0</number>
              </property>
-             <item>
-              <widget class="QPushButton" name="BackButton">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>50</width>
-                 <height>50</height>
-                </size>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QPushButton {
-	font: 900 10pt &quot;Satoshi Black&quot;;
-	background-color:  #2E6E65;
-	border-radius: 10px;
-	font-weight: bold;
-	font-size: 20px;
-	color: #F4F7ED;
-	text-align: center;
-}</string>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="icon">
-                <iconset>
-                 <normaloff>:/lucide/icons/arrow-left.svg</normaloff>:/lucide/icons/arrow-left.svg</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>35</width>
-                 <height>35</height>
-                </size>
-               </property>
-              </widget>
-             </item>
              <item alignment="Qt::AlignVCenter">
               <widget class="QLabel" name="InterfaceTitle">
                <property name="text">
-                <string>Check Up List</string>
+                <string>Records</string>
                </property>
               </widget>
              </item>
@@ -801,7 +766,7 @@ QScrollBar::sub-line:vertical{
                   <x>0</x>
                   <y>0</y>
                   <width>587</width>
-                  <height>597</height>
+                  <height>585</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_7">

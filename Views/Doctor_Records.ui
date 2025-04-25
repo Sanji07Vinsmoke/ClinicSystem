@@ -150,7 +150,7 @@ QLabel {
 }</string>
            </property>
            <property name="text">
-            <string>Records</string>
+            <string>Check Up</string>
            </property>
            <property name="icon">
             <iconset resource="../Images/resources.qrc">
@@ -167,7 +167,7 @@ QLabel {
          <item>
           <widget class="QPushButton" name="pushButton">
            <property name="text">
-            <string>Patients</string>
+            <string>Records</string>
            </property>
            <property name="icon">
             <iconset resource="../Images/resources.qrc">
@@ -330,7 +330,7 @@ QGraphicsView {
              <enum>Qt::LeftToRight</enum>
             </property>
             <property name="text">
-             <string>Records</string>
+             <string>Check Up List</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignLeading</set>

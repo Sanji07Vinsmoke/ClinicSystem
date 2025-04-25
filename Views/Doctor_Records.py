@@ -535,11 +535,11 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.pushButton_3.setText(_translate("MainWindow", "Dashboard"))
-        self.pushButton_2.setText(_translate("MainWindow", "Records"))
+        self.pushButton_2.setText(_translate("MainWindow", "Check Up"))
         self.pushButton.setText(_translate("MainWindow", "Patients"))
         self.pushButton_5.setText(_translate("MainWindow", "Profile"))
         self.pushButton_4.setText(_translate("MainWindow", "Logout"))
-        self.InterfaceTitle.setText(_translate("MainWindow", "Records"))
+        self.InterfaceTitle.setText(_translate("MainWindow", "Check Up List"))
         self.User.setText(_translate("MainWindow", "Roy Adrian Rondina"))
         self.ID.setText(_translate("MainWindow", "Doctor"))
         self.SortByBox.setItemText(0, _translate("MainWindow", "Sort By:"))

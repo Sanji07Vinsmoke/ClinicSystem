@@ -2,6 +2,7 @@ from PyQt5 import QtWidgets, QtCore, Qt
 from PyQt5.QtWidgets import QMainWindow, QTableWidgetItem, QMessageBox, QDialog, QVBoxLayout, QLabel, QDialogButtonBox
 from Controllers.DoctorDiagnosis_Controller import DoctorDiagnosis
 from Controllers.DoctorRecords_Controller import DoctorRecords
+from Controllers.DoctorPatientList_Controller import DoctorPatientList
 from Views.Doctor_Dashboard import Ui_MainWindow as DoctorDashboardUi
 from Models.CheckUp import CheckUp
 from Models.Patient import Patient
@@ -75,13 +76,31 @@ class DoctorDashboardController(QMainWindow):
         else:
             print("RecordButton is missing!")
 
+        if hasattr(self.ui, 'PatientButton'):
+            print ('PatientButton exists')
+            self.ui.PatientButton.clicked.connect(self.ViewPatient)
+            print('PatientButton connected to ViewPatient')
+        else:
+            print('PatientButton is Missing')
+
+    def ViewPatient(self):
+        print("PatientButton clicked!")
+        try:
+            # Instantiate and show the AdminStaffsController window
+            self.patient_controller = DoctorPatientList(self.doc_id)
+            self.patient_controller.show()
+            self.hide()
+        except Exception as e:
+            print(f"Error loading tables: {e}")
+            QMessageBox.critical(self, "Error", f"Failed to load tables: {e}")
+
     def ViewRecord(self):
-        print("StaffButton clicked!")
+        print("RecordButton clicked!")
         try:
             # Instantiate and show the AdminStaffsController window
             self.record_controller = DoctorRecords(self.doc_id)
             self.record_controller.show()
-            self.hide()  # Hide the current dashboard window
+            self.hide()
         except Exception as e:
             print(f"Error loading tables: {e}")
             QMessageBox.critical(self, "Error", f"Failed to load tables: {e}")

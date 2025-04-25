@@ -89,6 +89,7 @@ class Ui_MainWindow(object):
         self.TransactionsButton = QtWidgets.QPushButton(self.NavBar)
         self.TransactionsButton.setStyleSheet("QPushButton{\n"
 "    font: 900 20pt \"Satoshi Black\";    \n"
+"    border: 2px solid white;\n"
 "}\n"
 "")
         icon3 = QtGui.QIcon()
@@ -384,7 +385,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 502, 521))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 498, 521))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -439,9 +440,6 @@ class Ui_MainWindow(object):
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setSpacing(5)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.TransactButton = QtWidgets.QPushButton(self.widget_2)
-        self.TransactButton.setObjectName("TransactButton")
-        self.verticalLayout.addWidget(self.TransactButton)
         self.ViewButton = QtWidgets.QPushButton(self.widget_2)
         self.ViewButton.setObjectName("ViewButton")
         self.verticalLayout.addWidget(self.ViewButton)
@@ -463,7 +461,7 @@ class Ui_MainWindow(object):
         self.LabRequestButton.setText(_translate("MainWindow", " Lab Request"))
         self.ProfileButton.setText(_translate("MainWindow", " Settings"))
         self.pushButton_10.setText(_translate("MainWindow", " Logout"))
-        self.InterfaceTitle.setText(_translate("MainWindow", "Transactions"))
+        self.InterfaceTitle.setText(_translate("MainWindow", "Transactions List"))
         self.DiagnoseBox.setItemText(0, _translate("MainWindow", "Sort By:"))
         self.DateBox.setItemText(0, _translate("MainWindow", "Sort Order: "))
         item = self.TransactionTable.horizontalHeaderItem(0)
@@ -474,5 +472,4 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "Doctor"))
         item = self.TransactionTable.horizontalHeaderItem(3)
         item.setText(_translate("MainWindow", "Status"))
-        self.TransactButton.setText(_translate("MainWindow", "Transact"))
         self.ViewButton.setText(_translate("MainWindow", "View"))

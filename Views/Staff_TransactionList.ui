@@ -162,6 +162,7 @@ QLabel {
            <property name="styleSheet">
             <string notr="true">QPushButton{
 	font: 900 20pt &quot;Satoshi Black&quot;;	
+	border: 2px solid white;
 }
 </string>
            </property>
@@ -345,7 +346,7 @@ QGraphicsView {
           <item>
            <widget class="QLabel" name="InterfaceTitle">
             <property name="text">
-             <string>Transactions</string>
+             <string>Transactions List</string>
             </property>
            </widget>
           </item>
@@ -719,7 +720,7 @@ QScrollBar::sub-line:vertical{
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>502</width>
+                  <width>498</width>
                   <height>521</height>
                  </rect>
                 </property>
@@ -828,13 +829,6 @@ QTableWidget QHeaderView::section {
                 <property name="bottomMargin">
                  <number>0</number>
                 </property>
-                <item>
-                 <widget class="QPushButton" name="TransactButton">
-                  <property name="text">
-                   <string>Transact</string>
-                  </property>
-                 </widget>
-                </item>
                 <item>
                  <widget class="QPushButton" name="ViewButton">
                   <property name="text">

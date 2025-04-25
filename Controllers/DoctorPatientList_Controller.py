@@ -1,14 +1,14 @@
 from PyQt5 import QtWidgets, QtCore
 from PyQt5.QtWidgets import QMainWindow, QMessageBox
-from Views.Doctor_CheckUpList import Ui_MainWindow as DoctorCheckUpListUI
+from Views.Doctor_PatientList import Ui_MainWindow as PatientListUI
 from Controllers.DoctorCheckUpListView_Controller import DoctorCheckUpListView
 from Models.CheckUp import CheckUp
 from Models.Patient import Patient
 
-class DoctorCheckUpList(QMainWindow):
+class DoctorPatientList(QMainWindow):
     def __init__(self, doc_id):
         super().__init__()
-        self.ui = DoctorCheckUpListUI()
+        self.ui = PatientListUI()
         self.ui.setupUi(self)
 
         # Store the doc_id
@@ -16,7 +16,7 @@ class DoctorCheckUpList(QMainWindow):
         print(f"Doctor Records UI initialized with doc_id: {self.doc_id}")
 
         # Fetch all check-ups for the doctor
-        self.checkups = CheckUp.get_all_checkups_by_doc_id(self.doc_id)  # Store as an instance variable
+        self.checkups = CheckUp.get_all_checkups_by_doc_id(self.doc_id)
         if not self.checkups:
             print("No check-ups found for this doctor.")
             return

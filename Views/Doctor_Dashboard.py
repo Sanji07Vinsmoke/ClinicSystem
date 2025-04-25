@@ -9,7 +9,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from Images import resources
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -105,13 +105,13 @@ class Ui_MainWindow(object):
         self.RecordButton.setIconSize(QtCore.QSize(40, 40))
         self.RecordButton.setObjectName("RecordButton")
         self.MainButtons.addWidget(self.RecordButton)
-        self.PatienButton = QtWidgets.QPushButton(self.NavBar)
+        self.PatientButton = QtWidgets.QPushButton(self.NavBar)
         icon3 = QtGui.QIcon()
         icon3.addPixmap(QtGui.QPixmap(":/lucide/icons/user-round-pen.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.PatienButton.setIcon(icon3)
-        self.PatienButton.setIconSize(QtCore.QSize(40, 40))
-        self.PatienButton.setObjectName("PatienButton")
-        self.MainButtons.addWidget(self.PatienButton)
+        self.PatientButton.setIcon(icon3)
+        self.PatientButton.setIconSize(QtCore.QSize(40, 40))
+        self.PatientButton.setObjectName("PatientButton")
+        self.MainButtons.addWidget(self.PatientButton)
         self.verticalLayout.addLayout(self.MainButtons)
         spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout.addItem(spacerItem1)
@@ -307,7 +307,7 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.TotalLabel.sizePolicy().hasHeightForWidth())
         self.TotalLabel.setSizePolicy(sizePolicy)
-        self.TotalLabel.setWordWrap(False)
+        self.TotalLabel.setWordWrap(True)
         self.TotalLabel.setObjectName("TotalLabel")
         self.horizontalLayout_5.addWidget(self.TotalLabel, 0, QtCore.Qt.AlignLeft)
         self.verticalLayout_8.addWidget(self.frame, 0, QtCore.Qt.AlignLeft)
@@ -386,6 +386,7 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.SeeAllButton.sizePolicy().hasHeightForWidth())
         self.SeeAllButton.setSizePolicy(sizePolicy)
+        self.SeeAllButton.setText("")
         self.SeeAllButton.setObjectName("SeeAllButton")
         self.LabelHolder.addWidget(self.SeeAllButton)
         self.verticalLayout_7.addLayout(self.LabelHolder)
@@ -571,8 +572,8 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.pushButton_3.setText(_translate("MainWindow", "Dashboard"))
-        self.RecordButton.setText(_translate("MainWindow", "Records"))
-        self.PatienButton.setText(_translate("MainWindow", "Patients"))
+        self.RecordButton.setText(_translate("MainWindow", "Check Up"))
+        self.PatientButton.setText(_translate("MainWindow", "Records"))
         self.pushButton_5.setText(_translate("MainWindow", "Profile"))
         self.pushButton_4.setText(_translate("MainWindow", "Logout"))
         self.InterfaceTitle.setText(_translate("MainWindow", "Dashboard"))
@@ -581,7 +582,6 @@ class Ui_MainWindow(object):
         self.TotalDescription.setText(_translate("MainWindow", "00 more than yesterday"))
         self.AcceptCheckUp.setText(_translate("MainWindow", "Accept Check Up"))
         self.PatRec.setText(_translate("MainWindow", "Check Ups"))
-        self.SeeAllButton.setText(_translate("MainWindow", "See all"))
         item = self.PatientDetails.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "Check Up ID"))
         item = self.PatientDetails.horizontalHeaderItem(1)

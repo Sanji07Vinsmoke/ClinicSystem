@@ -165,7 +165,7 @@ QLabel {
          <item>
           <widget class="QPushButton" name="RecordButton">
            <property name="text">
-            <string>Records</string>
+            <string>Check Up</string>
            </property>
            <property name="icon">
             <iconset resource="../Images/resources.qrc">
@@ -180,9 +180,9 @@ QLabel {
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="PatienButton">
+          <widget class="QPushButton" name="PatientButton">
            <property name="text">
-            <string>Patients</string>
+            <string>Records</string>
            </property>
            <property name="icon">
             <iconset resource="../Images/resources.qrc">
@@ -707,7 +707,7 @@ QFrame#Histories QFrame {
                   </sizepolicy>
                  </property>
                  <property name="text">
-                  <string>See all</string>
+                  <string/>
                  </property>
                 </widget>
                </item>

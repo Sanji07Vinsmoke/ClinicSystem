@@ -17,6 +17,7 @@ class DoctorDiagnosis(QMainWindow):
         self.checkup_id = checkup_id
         self.doc_id = doc_id
 
+
         print(f"DoctorDiagnosis initialized successfully with CheckUp ID: {checkup_id} and doc_id: {doc_id}")
 
         # Load and display data related to the checkup ID
@@ -131,8 +132,14 @@ class DoctorDiagnosis(QMainWindow):
     def ViewRecords(self):
         print("Opening Doctor Records...")
         try:
-            # Close the current DoctorDiagnosis window
+            # Close the parent window (dashboard)
+            parent_window = self.parent()  # Get the parent window
+            if parent_window:
+                parent_window.close()  # Close the parent window
+
+            # Close the current window (self)
             self.close()
+
             # Instantiate and show the DoctorRecords window with the doc_id
             self.doctor_records = DoctorRecords(doc_id=self.doc_id)
             self.doctor_records.show()
@@ -206,8 +213,11 @@ class DoctorDiagnosis(QMainWindow):
     def open_doctor_lab_result_modal(self):
         try:
             # Instantiate and show the DoctorLabResult modal
-            self.doctor_lab_result = DoctorLabResult(checkup_id=self.checkup_id)
-            self.doctor_lab_result.show()
+            doctor_lab_result = DoctorLabResult(
+                checkup_id= self.checkup_id,
+                parent=self
+            )
+            doctor_lab_result.show()
             self.close()
         except Exception as e:
             print(f"Error opening DoctorLabResult modal: {e}")

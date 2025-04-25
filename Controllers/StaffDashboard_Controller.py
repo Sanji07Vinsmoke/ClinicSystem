@@ -5,6 +5,7 @@ from Views.Staff_Dashboard import Ui_MainWindow as StaffDashboardUi
 from Controllers.StaffAddCheckUp_Controller import StaffAddCheckUp
 from Controllers.StaffLabRequest_Controller import StaffLabRequest
 from Controllers.StaffTransactionModal_Controller import StaffTransactionModal
+from Controllers.StaffTransactionList_Controllerr import StaffTransactionList
 from Models.CheckUp import CheckUp
 from  Models.Patient import Patient
 import datetime
@@ -48,6 +49,14 @@ class StaffDashboardController(QMainWindow):
         if hasattr(self.ui, 'AddTransac'):
             print("AddTransac Exists")
             self.ui.AddTransac.clicked.connect(self.open_transaction_modal)
+
+        #Connect to Transcation
+        if hasattr(self.ui,'TransactionButton'):
+            print('TransactionButton exists')
+            self.ui.TransactionButton.clicked.connect(self.ViewStaffTransaction)
+            print("TransactionButton connected to ViewStaffTransaction")
+        else:
+            print('TransactionButton is missing')
 
         # Populate the PatientDetails table with pending check-ups
         self.load_pending_checkups()
@@ -186,6 +195,12 @@ class StaffDashboardController(QMainWindow):
         except Exception as e:
             print(f"Error opening Add Transaction Modal: {e}")
             QMessageBox.critical(self, "Error", f"Failed to open Add Transaction Modal: {e}")
+
+    def ViewStaffTransaction(self):
+        """Open the StaffTransactionList window."""
+        self.staff_transaction_window = StaffTransactionList()
+        self.staff_transaction_window.show()
+        self.close()
 
     def ViewStaffLabRequest(self):
         print("Opening staff lab request feature")
