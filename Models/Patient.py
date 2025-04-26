@@ -207,7 +207,7 @@ class Patient:
         try:
             with conn.cursor() as cursor:
                 cursor.execute("""
-                    SELECT pat_lname, pat_fname, pat_mname, pat_dob, pat_gender
+                    SELECT pat_lname, pat_fname, pat_mname, pat_dob, pat_gender, pat_contact
                     FROM patient
                     WHERE pat_id = %s;
                 """, (pat_id,))
@@ -218,7 +218,8 @@ class Patient:
                         'pat_fname': result[1],
                         'pat_mname': result[2],
                         'pat_dob': result[3],
-                        'pat_gender': result[4]
+                        'pat_gender': result[4],
+                        'pat_contact': result[5]
                     }
                 return None
         except Exception as e:

@@ -13,6 +13,15 @@ from Models.LaboratoryTest import Laboratory
 from Models.Prescription import Prescription
 from datetime import datetime, date
 
+#making it into pdf
+from reportlab.lib.pagesizes import letter
+from reportlab.lib.styles import getSampleStyleSheet
+from reportlab.lib.enums import TA_CENTER, TA_LEFT
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, Image
+from reportlab.lib.units import inch
+from reportlab.lib import colors
+from reportlab.lib.utils import ImageReader
+
 class ConfirmationDialog(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -379,6 +388,7 @@ class DoctorLabResult(QMainWindow):
             pat_mname = patient_details['pat_mname']
             pat_dob = patient_details['pat_dob']
             pat_gender = patient_details['pat_gender']
+            pat_contact = patient_details['pat_contact']
 
             # Calculate age based on date of birth
             age = self.calculate_age(pat_dob)
@@ -480,6 +490,7 @@ class DoctorLabResult(QMainWindow):
 
     def confirm_and_add_diagnosis(self):
         try:
+            checkup_details = CheckUp.get_checkup_details(self.checkup_id)
             # Get the diagnosis text and notes from the UI
             chck_diagnoses = self.ui.DiagnoseText.text().strip()
             chck_notes = self.ui.DiagnoseNotes.text().strip() or None
@@ -513,6 +524,8 @@ class DoctorLabResult(QMainWindow):
 
             # Notify the user of success
             QMessageBox.information(self, "Success", "Diagnosis saved successfully!")
+            pat_id = checkup_details['pat_id']
+            self.make_into_pdf(pat_id)
             print("Diagnosis saved successfully!")
 
             # Refresh the tables in the parent window
@@ -536,6 +549,118 @@ class DoctorLabResult(QMainWindow):
         except Exception as e:
             print(f"Error during diagnosis confirmation: {e}")
             QMessageBox.critical(self, "Error", f"An error occurred: {e}")
+
+    def make_into_pdf(self, pat_id):
+        try:
+            # Load patient details using the provided pat_id
+            checkup_details = CheckUp.get_checkup_details(self.checkup_id)
+            patient_details = Patient.get_patient_details(pat_id)
+            self.load_data()
+            self.load_prescription_table()
+
+            # Extract relevant data
+            pat_name = self.ui.PatName.text()
+            Birthday = checkup_details['chck_date']
+            age = self.ui.PatAge.text()
+            pat_gender = self.ui.PatGender.text()
+            pat_contact = patient_details['pat_contact']
+            chck_bp = self.ui.BloodPressure.text()
+            chck_temp = self.ui.Temperature.text()
+            chck_height = self.ui.Heights.text()
+            chck_weight = self.ui.Weight.text()
+            diagnose = self.ui.DiagnoseText.text()
+            notes = self.ui.DiagnoseNotes.text() if self.ui.DiagnoseNotes.text().strip() else None
+
+            # Prescription data
+            prescriptions = []
+            for row in range(self.ui.LabTestTabe_2.rowCount()):
+                med_name = self.ui.LabTestTabe_2.item(row, 0).text()
+                dosage = self.ui.LabTestTabe_2.item(row, 1).text()
+                intake = self.ui.LabTestTabe_2.item(row, 2).text()
+                prescriptions.append((med_name, dosage, intake))
+
+            # Define PDF file path with formatted filename
+            pdf_file_path = r"C:\Users\Roy Adrian Rondina\OneDrive - ctu.edu.ph\Desktop\Share"
+            file_name = f"{self.checkup_id}_{pat_name}.pdf"
+            pdf_file_path = os.path.join(pdf_file_path, file_name)
+
+            # Create PDF document
+            doc = SimpleDocTemplate(pdf_file_path, pagesize=letter)
+
+            # Initialize content list
+            content = []
+
+            # Add logo at the top-left corner
+            logo_path = "Images/covachalogo.png"  # Path to the logo image
+            logo = Image(logo_path, width=1.5 * inch, height=0.75 * inch)  # Adjust size as needed
+            content.append(logo)
+
+            # Define styles
+            styles = getSampleStyleSheet()
+            heading_style = styles["Heading1"]
+            subheading_style = styles["Heading2"]
+            normal_style = styles["Normal"]
+
+            # Add header
+            content.append(Spacer(1, 12))  # Add some space after the logo
+            content.append(Paragraph("COVACHA DIAGNOSTIC SERVICES", heading_style))
+            content.append(Spacer(1, 12))  # Add some space
+
+            # Add patient details table
+            patient_data = [
+                ["Name: ", pat_name],
+                ["Age: ", age],
+                ["Sex: ", pat_gender],
+                ["Date: ", Birthday],
+                ["Tel No./Cell No.: ", pat_contact],
+                ["BP: ", chck_bp],
+                ["Temp: ", chck_temp],
+                ["Wt: ", chck_weight],
+                ["Height: ", chck_height],
+                ["Diagnose: ", diagnose],
+                ["Notes: ", notes],
+            ]
+            patient_table = Table(patient_data, colWidths=[2.5 * inch, 4.5 * inch])
+            patient_table.setStyle(TableStyle([
+                ('BACKGROUND', (0, 0), (-1, -1), colors.lightgrey),
+                ('TEXTCOLOR', (0, 0), (-1, -1), colors.black),
+                ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
+                ('FONTNAME', (0, 0), (-1, -1), 'Helvetica'),
+                ('FONTSIZE', (0, 0), (-1, -1), 12),
+                ('BOTTOMPADDING', (0, 0), (-1, -1), 6),
+            ]))
+            content.append(patient_table)
+            content.append(Spacer(1, 12))  # Add some space
+
+            # Add prescription details
+            content.append(Paragraph("Prescription", subheading_style))
+            content.append(Spacer(1, 12))  # Add some space
+
+            if prescriptions:
+                prescription_data = [["Medicine", "Dosage", "Intake"]]
+                prescription_data.extend(prescriptions)
+                prescription_table = Table(prescription_data, colWidths=[3 * inch, 2 * inch, 2 * inch])
+                prescription_table.setStyle(TableStyle([
+                    ('BACKGROUND', (0, 0), (-1, 0), colors.lightgrey),
+                    ('TEXTCOLOR', (0, 0), (-1, 0), colors.black),
+                    ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+                    ('FONTNAME', (0, 0), (-1, -1), 'Helvetica'),
+                    ('FONTSIZE', (0, 0), (-1, -1), 12),
+                    ('BOTTOMPADDING', (0, 0), (-1, -1), 6),
+                    ('GRID', (0, 0), (-1, -1), 1, colors.grey),
+                ]))
+                content.append(prescription_table)
+            else:
+                content.append(Paragraph("No Prescriptions", normal_style))
+
+            # Build the PDF document
+            doc.build(content)
+
+            print(f"PDF generated successfully at: {pdf_file_path}")
+
+        except Exception as e:
+            print(f"Error generating PDF: {e}")
+            QMessageBox.critical(self, "Error", f"Failed to generate PDF: {e}")
 
     def open_or_focus_doctor_records(self):
         from Controllers.DoctorRecords_Controller import DoctorRecords

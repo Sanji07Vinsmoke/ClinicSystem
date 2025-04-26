@@ -288,24 +288,24 @@ class Ui_MainWindow(object):
         self.Search = QtWidgets.QLineEdit(self.SearchBar)
         self.Search.setObjectName("Search")
         self.horizontalLayout_3.addWidget(self.Search)
-        self.Icon = QtWidgets.QPushButton(self.SearchBar)
-        self.Icon.setText("")
+        self.SearchIcon = QtWidgets.QPushButton(self.SearchBar)
+        self.SearchIcon.setText("")
         icon6 = QtGui.QIcon()
         icon6.addPixmap(QtGui.QPixmap(":/lucide/icons/search.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.Icon.setIcon(icon6)
-        self.Icon.setIconSize(QtCore.QSize(40, 40))
-        self.Icon.setObjectName("Icon")
-        self.horizontalLayout_3.addWidget(self.Icon)
+        self.SearchIcon.setIcon(icon6)
+        self.SearchIcon.setIconSize(QtCore.QSize(40, 40))
+        self.SearchIcon.setObjectName("SearchIcon")
+        self.horizontalLayout_3.addWidget(self.SearchIcon)
         self.horizontalLayout_4.addWidget(self.SearchBar)
         spacerItem2 = QtWidgets.QSpacerItem(10, 20, QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_4.addItem(spacerItem2)
-        self.StatusBox = QtWidgets.QComboBox(self.SearchBarContainer)
+        self.SortBy = QtWidgets.QComboBox(self.SearchBarContainer)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.StatusBox.sizePolicy().hasHeightForWidth())
-        self.StatusBox.setSizePolicy(sizePolicy)
-        self.StatusBox.setStyleSheet("QComboBox {\n"
+        sizePolicy.setHeightForWidth(self.SortBy.sizePolicy().hasHeightForWidth())
+        self.SortBy.setSizePolicy(sizePolicy)
+        self.SortBy.setStyleSheet("QComboBox {\n"
 "    background-color: #D9E4DC;\n"
 "    border: 2px solid #2E6E65;\n"
 "    border-radius: 10px;\n"
@@ -334,12 +334,12 @@ class Ui_MainWindow(object):
 "    outline: 0;\n"
 "    font: 300 12pt \"Lexend Light\";\n"
 "}")
-        self.StatusBox.setEditable(False)
-        self.StatusBox.setObjectName("StatusBox")
-        self.StatusBox.addItem("")
-        self.horizontalLayout_4.addWidget(self.StatusBox)
-        self.TypeBox = QtWidgets.QComboBox(self.SearchBarContainer)
-        self.TypeBox.setStyleSheet("QComboBox {\n"
+        self.SortBy.setEditable(False)
+        self.SortBy.setObjectName("SortBy")
+        self.SortBy.addItem("")
+        self.horizontalLayout_4.addWidget(self.SortBy)
+        self.OrderBy = QtWidgets.QComboBox(self.SearchBarContainer)
+        self.OrderBy.setStyleSheet("QComboBox {\n"
 "    background-color: #D9E4DC;\n"
 "    border: 2px solid #2E6E65;\n"
 "    border-radius: 10px;\n"
@@ -368,9 +368,9 @@ class Ui_MainWindow(object):
 "    outline: 0;\n"
 "    font: 300 12pt \"Lexend Light\";\n"
 "}")
-        self.TypeBox.setObjectName("TypeBox")
-        self.TypeBox.addItem("")
-        self.horizontalLayout_4.addWidget(self.TypeBox)
+        self.OrderBy.setObjectName("OrderBy")
+        self.OrderBy.addItem("")
+        self.horizontalLayout_4.addWidget(self.OrderBy)
         spacerItem3 = QtWidgets.QSpacerItem(200, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_4.addItem(spacerItem3)
         self.verticalLayout_2.addWidget(self.SearchBarContainer)
@@ -489,8 +489,8 @@ class Ui_MainWindow(object):
         self.InterfaceTitle.setText(_translate("MainWindow", "Records"))
         self.UserName.setText(_translate("MainWindow", "Roy Adrian Rondina"))
         self.UserType.setText(_translate("MainWindow", "Doctor"))
-        self.StatusBox.setItemText(0, _translate("MainWindow", "Status"))
-        self.TypeBox.setItemText(0, _translate("MainWindow", "Type"))
+        self.SortBy.setItemText(0, _translate("MainWindow", "Sort By :"))
+        self.OrderBy.setItemText(0, _translate("MainWindow", "Order By :"))
         item = self.DoneTable.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "Check Up ID"))
         item = self.DoneTable.horizontalHeaderItem(1)

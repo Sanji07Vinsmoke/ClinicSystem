@@ -6,6 +6,7 @@ from Controllers.DoctorPatientList_Controller import DoctorPatientList
 from Views.Doctor_Dashboard import Ui_MainWindow as DoctorDashboardUi
 from Models.CheckUp import CheckUp
 from Models.Patient import Patient
+from datetime import datetime
 
 class ConfirmationDialog(QDialog):
     def __init__(self, parent=None):
@@ -167,12 +168,21 @@ class DoctorDashboardController(QMainWindow):
             # Fetch pending check-ups from the database
             pending_checkups = CheckUp.get_pending_checkups()
 
+            # Get today's date in the format YYYYMMDD
+            today_date = datetime.now().strftime("%Y%m%d")
+
+            # Filter check-ups for today
+            todays_checkups = [
+                checkup for checkup in pending_checkups
+                if checkup["chck_id"].startswith(today_date)
+            ]
+
             # Clear the table before populating it
             self.ui.PatientDetails.setRowCount(0)
 
-            # Check if there are no pending check-ups
-            if not pending_checkups:
-                print("No pending check-ups found.")
+            # Check if there are no check-ups for today
+            if not todays_checkups:
+                print("No check-ups found for today.")
 
                 # Add a single row with the message "No Patient Yet"
                 self.ui.PatientDetails.insertRow(0)
@@ -184,8 +194,8 @@ class DoctorDashboardController(QMainWindow):
                 self.ui.PatientDetails.setSpan(0, 0, 1, column_count)
                 return
 
-            # Populate the table with pending check-ups
-            for row, checkup in enumerate(pending_checkups):
+            # Populate the table with today's check-ups
+            for row, checkup in enumerate(todays_checkups):
                 pat_id = checkup["pat_id"]
                 chck_id = checkup["chck_id"]
 
@@ -208,9 +218,9 @@ class DoctorDashboardController(QMainWindow):
             self.ui.PatientDetails.resizeColumnsToContents()
 
             # Optionally, set minimum widths for specific columns
-            self.ui.PatientDetails.setColumnWidth(0, 150)
-            self.ui.PatientDetails.setColumnWidth(1, 150)
-            self.ui.PatientDetails.setColumnWidth(2, 200)
+            self.ui.PatientDetails.setColumnWidth(0, 150)  # Check Up ID column
+            self.ui.PatientDetails.setColumnWidth(1, 150)  # Patient ID column
+            self.ui.PatientDetails.setColumnWidth(2, 200)  # Name column
 
         except Exception as e:
             print(f"Error loading pending check-ups: {e}")

@@ -547,7 +547,7 @@ QComboBox::drop-down {
                  <widget class="QLineEdit" name="Search"/>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="Icon">
+                 <widget class="QPushButton" name="SearchIcon">
                   <property name="text">
                    <string/>
                   </property>
@@ -583,7 +583,7 @@ QComboBox::drop-down {
               </spacer>
              </item>
              <item>
-              <widget class="QComboBox" name="StatusBox">
+              <widget class="QComboBox" name="SortBy">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -626,13 +626,13 @@ QComboBox QAbstractItemView {
                </property>
                <item>
                 <property name="text">
-                 <string>Status</string>
+                 <string>Sort By :</string>
                 </property>
                </item>
               </widget>
              </item>
              <item>
-              <widget class="QComboBox" name="TypeBox">
+              <widget class="QComboBox" name="OrderBy">
                <property name="styleSheet">
                 <string notr="true">QComboBox {
     background-color: #D9E4DC;
@@ -666,7 +666,7 @@ QComboBox QAbstractItemView {
                </property>
                <item>
                 <property name="text">
-                 <string>Type</string>
+                 <string>Order By :</string>
                 </property>
                </item>
               </widget>

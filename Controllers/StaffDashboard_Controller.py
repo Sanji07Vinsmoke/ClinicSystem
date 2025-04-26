@@ -8,59 +8,66 @@ from Controllers.StaffTransactionModal_Controller import StaffTransactionModal
 from Controllers.StaffTransactionList_Controllerr import StaffTransactionList
 from Models.CheckUp import CheckUp
 from  Models.Patient import Patient
-import datetime
+from datetime import datetime
+
 
 class StaffDashboardController(QMainWindow):
-    def __init__(self, staff_id = None):
+    def __init__(self, staff_id=None):
         super().__init__()
         self.ui = StaffDashboardUi()
         self.ui.setupUi(self)
+        print("StaffDashboard UI initialized!")
 
         # Initialize dynamic date and time labels
-        self.update_time_labels()
+        try:
+            self.update_time_labels()
+            print("Time labels updated successfully.")
+        except Exception as e:
+            print(f"Error updating time labels: {e}")
 
         # Set up a timer to update the labels every second
-        self.timer = QTimer(self)
-        self.timer.timeout.connect(self.update_time_labels)
-        self.timer.start(1000)
+        try:
+            self.timer = QTimer(self)
+            self.timer.timeout.connect(self.update_time_labels)
+            self.timer.start(1000)
+            print("Timer started successfully.")
+        except Exception as e:
+            print(f"Error setting up timer: {e}")
 
         # Store the staff ID
         self.staff_id = staff_id
         print(f"StaffDashboard initialized for staff ID: {self.staff_id}")
 
-        print("StaffDashboard UI initialized!")
-
-        if hasattr(self.ui, 'LabRequestButton'):
-            print("LabRequestButton exists")
-            self.ui.LabRequestButton.clicked.connect(self.ViewStaffLabRequest)
-            print("LabRequestButton connected to button_clicked method!")
-        else:
-            print("LabRequestButton is missing!")
-
         # Connect buttons
-        if hasattr(self.ui, 'AddCheckUp'):
-            print("AddCheckUp exists")
-            self.ui.AddCheckUp.clicked.connect(self.open_checkup_user_form)
-            print("AddCheckUp connected to open_add_user_form!")
-        else:
-            print("AddUserButton is missing!")
+        try:
+            if hasattr(self.ui, 'LabRequestButton'):
+                self.ui.LabRequestButton.clicked.connect(self.ViewStaffLabRequest)
+                print("LabRequestButton connected successfully.")
+            if hasattr(self.ui, 'AddCheckUp'):
+                self.ui.AddCheckUp.clicked.connect(self.open_checkup_user_form)
+                print("AddCheckUp connected successfully.")
+            if hasattr(self.ui, 'AddTransac'):
+                self.ui.AddTransac.clicked.connect(self.open_transaction_modal)
+                print("AddTransac connected successfully.")
+            if hasattr(self.ui, 'TransactionButton'):
+                self.ui.TransactionButton.clicked.connect(self.ViewStaffTransaction)
+                print("TransactionButton connected successfully.")
+        except Exception as e:
+            print(f"Error connecting buttons: {e}")
 
-         # Connect AddTransaction button
-        if hasattr(self.ui, 'AddTransac'):
-            print("AddTransac Exists")
-            self.ui.AddTransac.clicked.connect(self.open_transaction_modal)
+        # Load pending check-ups
+        try:
+            self.load_pending_checkups()
+            print("Pending check-ups loaded successfully.")
+        except Exception as e:
+            print(f"Error loading pending check-ups: {e}")
 
-        #Connect to Transcation
-        if hasattr(self.ui,'TransactionButton'):
-            print('TransactionButton exists')
-            self.ui.TransactionButton.clicked.connect(self.ViewStaffTransaction)
-            print("TransactionButton connected to ViewStaffTransaction")
-        else:
-            print('TransactionButton is missing')
-
-        # Populate the PatientDetails table with pending check-ups
-        self.load_pending_checkups()
-        self.apply_table_styles()
+        # Apply table styles
+        try:
+            self.apply_table_styles()
+            print("Table styles applied successfully.")
+        except Exception as e:
+            print(f"Error applying table styles: {e}")
 
     def apply_table_styles(self):
         """Apply custom styles to the tables"""
@@ -124,16 +131,25 @@ class StaffDashboardController(QMainWindow):
             # Fetch pending check-ups from the database
             pending_checkups = CheckUp.get_pending_checkups()
 
+            # Get today's date in the format YYYYMMDD
+            today_date = datetime.now().strftime("%Y%m%d")
+
+            # Filter check-ups for today
+            todays_checkups = [
+                checkup for checkup in pending_checkups
+                if checkup["chck_id"].startswith(today_date)
+            ]
+
             # Clear the table before populating it
             self.ui.PendingTable.setRowCount(0)
 
-            # Check if there are no pending check-ups
-            if not pending_checkups:
-                print("No pending check-ups found.")
+            # Check if there are no check-ups for today
+            if not todays_checkups:
+                print("No check-ups found for today.")
 
-                # Add a single row with the message "No Pending Check Ups"
+                # Add a single row with the message "No Check Ups For Today"
                 self.ui.PendingTable.insertRow(0)
-                no_data_item = QTableWidgetItem("No Pending Check Ups")
+                no_data_item = QTableWidgetItem("No Check Ups For Today")
                 self.ui.PendingTable.setItem(0, 0, no_data_item)
 
                 # Span the message across all columns
@@ -141,8 +157,8 @@ class StaffDashboardController(QMainWindow):
                 self.ui.PendingTable.setSpan(0, 0, 1, column_count)
                 return
 
-            # Populate the table with pending check-ups
-            for row, checkup in enumerate(pending_checkups):
+            # Populate the table with today's check-ups
+            for row, checkup in enumerate(todays_checkups):
                 pat_id = checkup["pat_id"]
                 chck_id = checkup["chck_id"]
                 chck_type = checkup["chckup_type"]
@@ -218,20 +234,16 @@ class StaffDashboardController(QMainWindow):
 
     def update_time_labels(self):
         """Update the Time, Day, and Month labels with current values."""
-        now = datetime.datetime.now()
-
+        now = datetime.now()  # Corrected: Use datetime.now() directly
         # Format time (e.g., 03:45 PM)
         time_format = now.strftime("%I:%M %p")
         self.ui.Time.setText(time_format)
-
         # Format day (e.g., Sunday)
         day_format = now.strftime("%A")
         self.ui.Day.setText(day_format)
-
         # Format month and year (e.g., October 15, 2023)
         month_year_format = f"{now.strftime('%B')} {now.day}, {now.year}"
         self.ui.Month.setText(month_year_format)
-
         # Force refresh the UI
         self.repaint()
 

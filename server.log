@@ -1,0 +1,183 @@
+INFO:root:Connection from ('192.168.101.4', 55660)
+INFO:root:Connection from ('192.168.101.4', 55661)
+INFO:root:Connection from ('192.168.101.4', 55696)
+INFO:root:Connection from ('192.168.101.4', 55697)
+INFO:root:Connection from ('192.168.101.4', 55719)
+INFO:root:Connection from ('192.168.101.4', 55720)
+INFO:root:Connection from ('192.168.101.4', 55727)
+INFO:root:Connection from ('192.168.101.4', 55730)
+INFO:root:Connection from ('192.168.101.4', 55731)
+INFO:root:Connection from ('192.168.101.4', 55732)
+INFO:root:Connection from ('192.168.101.4', 55746)
+INFO:root:Connection from ('192.168.101.4', 55747)
+INFO:root:Connection from ('192.168.101.4', 55752)
+INFO:root:Connection from ('192.168.101.4', 55762)
+DEBUG:root:Received: {"command": "GET_PENDING_CHECKUP", "data": {}}
+INFO:root:Connection from ('192.168.101.4', 55934)
+DEBUG:root:Received: {"command": "GET_PENDING_CHECKUP", "data": {}}
+INFO:root:Connection from ('192.168.101.4', 55945)
+DEBUG:root:Received: {"command": "GET_PENDING_CHECKUP", "data": {}}
+INFO:root:Connection from ('192.168.101.4', 55959)
+DEBUG:root:Received: {"command": "GET_PENDING_CHECKUP", "data": {}}
+INFO:root:Connection from ('192.168.101.4', 56028)
+DEBUG:root:Received: GET_PENDING_CHECKUP
+ERROR:root:Connection error: local variable 'command' referenced before assignment
+INFO:root:Connection from ('192.168.101.4', 56071)
+DEBUG:root:Raw data received: GET_PENDING_CHECKUP
+ERROR:root:Connection error: local variable 'command' referenced before assignment
+INFO:root:Connection from ('192.168.101.4', 56237)
+DEBUG:root:Raw data received: GET_PENDING_CHECKUP
+ERROR:root:Connection error: name 'command' is not defined
+INFO:root:Connection from ('192.168.101.4', 56244)
+DEBUG:root:Raw data received: GET_PENDING_CHECKUP
+ERROR:root:Connection error: name 'command' is not defined
+INFO:root:Connection from ('192.168.101.4', 56261)
+DEBUG:root:Raw data received: GET_PENDING_CHECKUP
+ERROR:root:Connection error: name 'command' is not defined
+INFO:root:Connection from ('192.168.101.4', 56271)
+DEBUG:root:Raw data received: GET_PENDING_CHECKUP
+ERROR:root:Connection error: name 'command' is not defined
+INFO:root:Connection from ('192.168.101.4', 56292)
+DEBUG:root:Received part: b'GET_PENDING_CHECKUP'
+DEBUG:root:Decoded data: GET_PENDING_CHECKUP
+DEBUG:root:Raw data received: GET_PENDING_CHECKUP
+ERROR:root:Connection error: name 'command' is not defined
+2025-04-27 00:36:51,148 - INFO - Server started
+2025-04-27 00:36:51,148 - INFO - Server started on 0.0.0.0:5433
+2025-04-27 00:37:34,773 - INFO - New connection from ('192.168.101.4', 56495)
+2025-04-27 00:37:34,773 - INFO - Started thread for ('192.168.101.4', 56495)
+2025-04-27 00:37:34,773 - DEBUG - Received from ('192.168.101.4', 56495): GET_PENDING_CHECKUP
+2025-04-27 00:37:34,855 - DEBUG - Sent response to ('192.168.101.4', 56495)
+2025-04-27 00:37:34,981 - WARNING - Client ('192.168.101.4', 56495) disconnected
+2025-04-27 00:37:34,982 - INFO - Connection with ('192.168.101.4', 56495) closed
+2025-04-27 00:39:17,477 - INFO - New connection from ('192.168.101.4', 56509)
+2025-04-27 00:39:17,477 - INFO - Started thread for ('192.168.101.4', 56509)
+2025-04-27 00:39:17,478 - DEBUG - Received from ('192.168.101.4', 56509): GET_PENDING_CHECKUP
+2025-04-27 00:39:17,560 - DEBUG - Sent response to ('192.168.101.4', 56509)
+2025-04-27 00:39:17,641 - WARNING - Client ('192.168.101.4', 56509) disconnected
+2025-04-27 00:39:17,641 - INFO - Connection with ('192.168.101.4', 56509) closed
+2025-04-27 00:41:03,777 - INFO - Server started
+2025-04-27 00:41:04,296 - INFO - Server started on 0.0.0.0:5433
+2025-04-27 00:41:27,529 - INFO - Server started
+2025-04-27 00:41:28,069 - INFO - Server started on 0.0.0.0:5433
+2025-04-27 00:43:09,492 - INFO - New connection from ('192.168.101.4', 56546)
+2025-04-27 00:43:09,492 - INFO - Started thread for ('192.168.101.4', 56546)
+2025-04-27 00:43:09,493 - DEBUG - Received from ('192.168.101.4', 56546): GET_PENDING_CHECKUP
+2025-04-27 00:43:09,584 - DEBUG - Sent response to ('192.168.101.4', 56546)
+2025-04-27 00:43:09,660 - WARNING - Client ('192.168.101.4', 56546) disconnected
+2025-04-27 00:43:09,661 - INFO - Connection with ('192.168.101.4', 56546) closed
+2025-04-27 00:43:58,290 - INFO - Server started
+2025-04-27 00:43:58,823 - INFO - Server started on 0.0.0.0:5433
+2025-04-27 00:44:27,878 - INFO - New connection from ('192.168.101.4', 56560)
+2025-04-27 00:44:27,878 - INFO - Started thread for ('192.168.101.4', 56560)
+2025-04-27 00:44:28,270 - DEBUG - Received from ('192.168.101.4', 56560): GET_PENDING_CHECKUP
+2025-04-27 00:44:28,351 - DEBUG - Sent response to ('192.168.101.4', 56560)
+2025-04-27 00:44:28,373 - WARNING - Client ('192.168.101.4', 56560) disconnected
+2025-04-27 00:44:28,373 - INFO - Connection with ('192.168.101.4', 56560) closed
+2025-04-27 00:47:53,082 - INFO - New connection from ('192.168.101.4', 56610)
+2025-04-27 00:47:53,087 - INFO - Started thread for ('192.168.101.4', 56610)
+2025-04-27 00:47:53,087 - DEBUG - Received from ('192.168.101.4', 56610): GET_PENDING_CHECKUP
+2025-04-27 00:47:53,226 - DEBUG - Sent response to ('192.168.101.4', 56610)
+2025-04-27 00:47:53,226 - WARNING - Client ('192.168.101.4', 56610) disconnected
+2025-04-27 00:47:53,226 - INFO - Connection with ('192.168.101.4', 56610) closed
+2025-04-27 00:53:25,269 - INFO - Server started
+2025-04-27 00:53:26,458 - INFO - Server started on 0.0.0.0:5433
+2025-04-27 01:13:25,416 - INFO - New connection from ('192.168.101.4', 56834)
+2025-04-27 01:13:25,424 - INFO - Started thread for ('192.168.101.4', 56834)
+2025-04-27 01:13:25,424 - DEBUG - Received from ('192.168.101.4', 56834): GET_PENDING_CHECKUP
+2025-04-27 01:13:25,580 - DEBUG - Sent response to ('192.168.101.4', 56834)
+2025-04-27 01:13:25,796 - WARNING - Client ('192.168.101.4', 56834) disconnected
+2025-04-27 01:13:25,802 - INFO - Connection with ('192.168.101.4', 56834) closed
+2025-04-27 01:15:05,867 - INFO - Server started
+2025-04-27 01:15:07,061 - INFO - Server started on 0.0.0.0:5433
+2025-04-27 01:15:57,636 - DEBUG - STREAM b'IHDR' 16 13
+2025-04-27 01:15:57,637 - DEBUG - STREAM b'sRGB' 41 1
+2025-04-27 01:15:57,637 - DEBUG - STREAM b'IDAT' 54 8192
+2025-04-27 01:18:39,965 - INFO - Server started
+2025-04-27 01:18:40,960 - INFO - Server started on 0.0.0.0:5433
+2025-04-27 01:18:44,060 - INFO - New connection from ('192.168.101.4', 56875)
+2025-04-27 01:18:44,060 - INFO - Started thread for ('192.168.101.4', 56875)
+2025-04-27 01:18:45,549 - ERROR - Error with ('192.168.101.4', 56875): local variable 'command' referenced before assignment
+2025-04-27 01:18:45,550 - INFO - Connection with ('192.168.101.4', 56875) closed
+2025-04-27 01:18:58,703 - INFO - New connection from ('192.168.101.4', 56880)
+2025-04-27 01:18:58,703 - INFO - Started thread for ('192.168.101.4', 56880)
+2025-04-27 01:18:58,703 - DEBUG - Received from ('192.168.101.4', 56880): GET_PENDING_CHECKUP
+2025-04-27 01:18:58,903 - DEBUG - Sent response to ('192.168.101.4', 56880)
+2025-04-27 01:18:58,944 - WARNING - Client ('192.168.101.4', 56880) disconnected
+2025-04-27 01:18:58,944 - INFO - Connection with ('192.168.101.4', 56880) closed
+2025-04-27 01:20:08,347 - INFO - New connection from ('192.168.101.4', 56894)
+2025-04-27 01:20:08,347 - INFO - Started thread for ('192.168.101.4', 56894)
+2025-04-27 01:20:08,347 - DEBUG - Received from ('192.168.101.4', 56894): GET_PENDING_CHECKUP
+2025-04-27 01:20:08,430 - DEBUG - Sent response to ('192.168.101.4', 56894)
+2025-04-27 01:20:08,439 - WARNING - Client ('192.168.101.4', 56894) disconnected
+2025-04-27 01:20:08,439 - INFO - Connection with ('192.168.101.4', 56894) closed
+2025-04-27 01:20:08,447 - INFO - New connection from ('192.168.101.4', 56895)
+2025-04-27 01:20:08,447 - INFO - Started thread for ('192.168.101.4', 56895)
+2025-04-27 01:20:08,447 - DEBUG - Received from ('192.168.101.4', 56895): GET_PATIENT_BY_ID 10000002
+2025-04-27 01:20:08,521 - ERROR - Error processing GET_PATIENT_BY_ID: Object of type date is not JSON serializable
+2025-04-27 01:20:08,831 - WARNING - Client ('192.168.101.4', 56895) disconnected
+2025-04-27 01:20:08,831 - INFO - Connection with ('192.168.101.4', 56895) closed
+2025-04-27 01:25:28,680 - INFO - New connection from ('192.168.101.4', 56938)
+2025-04-27 01:25:28,680 - INFO - Started thread for ('192.168.101.4', 56938)
+2025-04-27 01:25:28,680 - DEBUG - Received from ('192.168.101.4', 56938): GET_PENDING_CHECKUP
+2025-04-27 01:25:28,998 - DEBUG - Sent response to ('192.168.101.4', 56938)
+2025-04-27 01:25:29,197 - WARNING - Client ('192.168.101.4', 56938) disconnected
+2025-04-27 01:25:29,205 - INFO - Connection with ('192.168.101.4', 56938) closed
+2025-04-27 01:25:29,216 - INFO - New connection from ('192.168.101.4', 56939)
+2025-04-27 01:25:29,216 - INFO - Started thread for ('192.168.101.4', 56939)
+2025-04-27 01:25:29,216 - DEBUG - Received from ('192.168.101.4', 56939): GET_PATIENT_BY_ID 10000002
+2025-04-27 01:25:29,353 - ERROR - Error processing GET_PATIENT_BY_ID: Object of type date is not JSON serializable
+2025-04-27 01:25:29,361 - WARNING - Client ('192.168.101.4', 56939) disconnected
+2025-04-27 01:25:29,369 - INFO - Connection with ('192.168.101.4', 56939) closed
+2025-04-27 01:26:42,382 - INFO - Server started
+2025-04-27 01:26:43,573 - INFO - Server started on 0.0.0.0:5433
+2025-04-27 01:27:04,860 - INFO - New connection from ('192.168.101.4', 56953)
+2025-04-27 01:27:04,861 - DEBUG - Received from ('192.168.101.4', 56953): GET_PENDING_CHECKUP
+2025-04-27 01:27:04,944 - DEBUG - Sent response: {"status": "success", "data": [{"chck_id": "20250418-002", "pat_id": 10000012, "chckup_type": "New Check Up"}, {"chck_id": "20250423-001", "pat_id": 10000002, "chckup_type": "New Check Up"}, {"chck_id": "20250420-001", "pat_id": 10000013, "chckup_type": "New Check Up"}, {"chck_id": "20250423-002", "pat_id": 10000021, "chckup_type": "New Check Up"}, {"chck_id": "20250426-004", "pat_id": 10000002, "chckup_type": "New Check Up"}, {"chck_id": "20250427-002", "pat_id": 10000002, "chckup_type": "New Check Up"}]}
+2025-04-27 01:27:04,991 - WARNING - Client ('192.168.101.4', 56953) disconnected
+2025-04-27 01:27:04,991 - INFO - Connection with ('192.168.101.4', 56953) closed
+2025-04-27 01:29:02,904 - INFO - New connection from ('192.168.101.4', 56963)
+2025-04-27 01:29:02,904 - DEBUG - Received from ('192.168.101.4', 56963): GET_PENDING_CHECKUP
+2025-04-27 01:29:02,985 - DEBUG - Sent response: {"status": "success", "data": [{"chck_id": "20250418-002", "pat_id": 10000012, "chckup_type": "New Check Up"}, {"chck_id": "20250423-001", "pat_id": 10000002, "chckup_type": "New Check Up"}, {"chck_id": "20250420-001", "pat_id": 10000013, "chckup_type": "New Check Up"}, {"chck_id": "20250423-002", "pat_id": 10000021, "chckup_type": "New Check Up"}, {"chck_id": "20250426-004", "pat_id": 10000002, "chckup_type": "New Check Up"}, {"chck_id": "20250427-002", "pat_id": 10000002, "chckup_type": "New Check Up"}]}
+2025-04-27 01:29:03,088 - WARNING - Client ('192.168.101.4', 56963) disconnected
+2025-04-27 01:29:03,088 - INFO - Connection with ('192.168.101.4', 56963) closed
+2025-04-27 01:32:34,143 - INFO - Server started
+2025-04-27 01:32:34,843 - INFO - Server started on 0.0.0.0:5433
+2025-04-27 01:32:56,199 - INFO - New connection from ('192.168.101.4', 56991)
+2025-04-27 01:32:56,199 - DEBUG - Received from ('192.168.101.4', 56991): GET_PENDING_CHECKUP
+2025-04-27 01:32:56,287 - DEBUG - Sent response: [{"chck_id": "20250418-002", "pat_id": 10000012, "chckup_type": "New Check Up"}, {"chck_id": "20250423-001", "pat_id": 10000002, "chckup_type": "New Check Up"}, {"chck_id": "20250420-001", "pat_id": 10000013, "chckup_type": "New Check Up"}, {"chck_id": "20250423-002", "pat_id": 10000021, "chckup_type": "New Check Up"}, {"chck_id": "20250426-004", "pat_id": 10000002, "chckup_type": "New Check Up"}, {"chck_id": "20250427-002", "pat_id": 10000002, "chckup_type": "New Check Up"}]
+2025-04-27 01:32:56,292 - WARNING - Client ('192.168.101.4', 56991) disconnected
+2025-04-27 01:32:56,294 - INFO - Connection with ('192.168.101.4', 56991) closed
+2025-04-27 01:32:56,298 - INFO - New connection from ('192.168.101.4', 56992)
+2025-04-27 01:32:56,298 - DEBUG - Received from ('192.168.101.4', 56992): GET_PATIENT_BY_ID 10000002
+2025-04-27 01:32:56,377 - DEBUG - Sent response: {"id": 10000002, "last_name": "Bejec", "first_name": "Dan", "middle_name": "Anton", "gender": "Male", "dob": "1996-01-26", "age": 29, "address": "urello", "contact": "3424243242"}
+2025-04-27 01:32:56,480 - WARNING - Client ('192.168.101.4', 56992) disconnected
+2025-04-27 01:32:56,481 - INFO - Connection with ('192.168.101.4', 56992) closed
+2025-04-27 02:34:39,768 - INFO - Server started
+2025-04-27 02:34:39,769 - INFO - Server started on 0.0.0.0:5433
+2025-04-27 02:35:59,347 - INFO - Server started
+2025-04-27 02:35:59,930 - INFO - Server started on 0.0.0.0:5433
+2025-04-27 02:40:43,987 - INFO - Server started
+2025-04-27 02:40:43,988 - INFO - Server started on 0.0.0.0:5433
+2025-04-27 02:41:35,270 - INFO - Server started
+2025-04-27 02:41:35,802 - INFO - Server started on 0.0.0.0:5433
+2025-04-27 02:44:05,566 - INFO - Server started
+2025-04-27 02:44:06,092 - INFO - Server started on 0.0.0.0:5433
+2025-04-27 02:57:57,550 - INFO - Server started
+2025-04-27 02:57:57,551 - INFO - Server started on 0.0.0.0:5433
+2025-04-27 02:59:13,346 - INFO - Server started
+2025-04-27 02:59:13,922 - INFO - Server started on 0.0.0.0:5433
+2025-04-27 03:01:20,657 - INFO - Server started
+2025-04-27 03:01:21,258 - INFO - Server started on 0.0.0.0:5433
+2025-04-27 03:03:40,323 - INFO - Server started
+2025-04-27 03:03:40,871 - INFO - Server started on 0.0.0.0:5433
+2025-04-27 03:05:24,808 - INFO - Server started
+2025-04-27 03:05:25,733 - INFO - Server started on 0.0.0.0:5433
+2025-04-27 03:08:58,967 - INFO - Server started
+2025-04-27 03:08:58,967 - INFO - Server started on 0.0.0.0:5433
+2025-04-27 03:13:06,198 - INFO - Server started
+2025-04-27 03:13:06,844 - INFO - Server started on 0.0.0.0:5433
+2025-04-27 03:22:54,173 - INFO - Server started
+2025-04-27 03:22:54,174 - INFO - Server started on 0.0.0.0:5433
+2025-04-27 03:24:58,914 - INFO - Server started
+2025-04-27 03:24:59,390 - INFO - Server started on 0.0.0.0:5433

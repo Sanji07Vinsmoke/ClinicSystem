@@ -31,7 +31,7 @@ class Prescription:
             conn.commit()
 
             print("Prescription added successfully!")
-            return True  # Successful insertion
+            return True
 
         except Exception as e:
             print(f"Error adding prescription: {e}")

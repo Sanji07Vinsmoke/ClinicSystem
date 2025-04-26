@@ -449,7 +449,64 @@ class Ui_MainWindow(object):
         self.horizontalLayout_5.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_5.setSpacing(10)
         self.horizontalLayout_5.setObjectName("horizontalLayout_5")
-        self.TransactionTable = QtWidgets.QTableWidget(self.Transaction)
+        self.scrollArea = QtWidgets.QScrollArea(self.Transaction)
+        self.scrollArea.setStyleSheet("QScrollBar:vertical{\n"
+"     background: transparent;\n"
+"     width: 10px;\n"
+"     border-radius: 5px;\n"
+"}\n"
+"QScrollBar:horizontal  {\n"
+"     background: transparent;\n"
+"     height: 10px;\n"
+"     border-radius: 5px;\n"
+"}\n"
+"QScrollBar::handle:vertical,\n"
+"QScrollBar::handle:horizontal  {\n"
+"        background: #C0C0C0;\n"
+"        border-radius: 5px;\n"
+"}\n"
+"QScrollBar::handle:vertical:hover,\n"
+"QScrollBar::handle:horizontal:hover {\n"
+"        background: #A0A0A0;\n"
+"}\n"
+"QScrollBar::add-line:vertical,\n"
+"QScrollBar::sub-line:horizontal{\n"
+"        background: none;\n"
+"        border: none;\n"
+"}\n"
+"\n"
+"")
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollArea.setObjectName("scrollArea")
+        self.scrollAreaWidgetContents = QtWidgets.QWidget()
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 735, 637))
+        self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
+        self.verticalLayout_7 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
+        self.verticalLayout_7.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_7.setSpacing(0)
+        self.verticalLayout_7.setObjectName("verticalLayout_7")
+        self.TransactionTable = QtWidgets.QTableWidget(self.scrollAreaWidgetContents)
+        self.TransactionTable.setStyleSheet("QTableWidget {\n"
+"    background-color: #F4F7ED;\n"
+"    gridline-color: transparent;\n"
+"    border-radius: 8px;\n"
+"    border: 2px solid #2E6E65;\n"
+"}\n"
+"QTableWidget::item {\n"
+"    border: none;\n"
+"    font:500 16pt \"Satoshi\";\n"
+"    color: #2B3752;\n"
+"}\n"
+"QTableWidget::item:selected {\n"
+"    background-color: rgba(46, 110, 101, 0.3);\n"
+"}\n"
+"QTableWidget QHeaderView::section {\n"
+"    background-color: #2E6E65;\n"
+"    color: white;\n"
+"    padding: 5px;\n"
+"    font: 700 11pt \"Satoshi\";\n"
+"    border: 2px solid #2E6E65;\n"
+"}")
         self.TransactionTable.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.AdjustToContents)
         self.TransactionTable.setCornerButtonEnabled(True)
         self.TransactionTable.setColumnCount(4)
@@ -465,7 +522,9 @@ class Ui_MainWindow(object):
         self.TransactionTable.setHorizontalHeaderItem(3, item)
         self.TransactionTable.horizontalHeader().setHighlightSections(True)
         self.TransactionTable.horizontalHeader().setStretchLastSection(True)
-        self.horizontalLayout_5.addWidget(self.TransactionTable)
+        self.verticalLayout_7.addWidget(self.TransactionTable)
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+        self.horizontalLayout_5.addWidget(self.scrollArea)
         self.widget = QtWidgets.QWidget(self.Transaction)
         self.widget.setMinimumSize(QtCore.QSize(110, 0))
         self.widget.setObjectName("widget")
@@ -476,12 +535,6 @@ class Ui_MainWindow(object):
         self.ViewTransaction = QtWidgets.QPushButton(self.widget)
         self.ViewTransaction.setObjectName("ViewTransaction")
         self.verticalLayout_6.addWidget(self.ViewTransaction)
-        self.ModifyTransaction = QtWidgets.QPushButton(self.widget)
-        self.ModifyTransaction.setObjectName("ModifyTransaction")
-        self.verticalLayout_6.addWidget(self.ModifyTransaction)
-        self.DeleteTransaction = QtWidgets.QPushButton(self.widget)
-        self.DeleteTransaction.setObjectName("DeleteTransaction")
-        self.verticalLayout_6.addWidget(self.DeleteTransaction)
         self.horizontalLayout_5.addWidget(self.widget, 0, QtCore.Qt.AlignTop)
         self.verticalLayout_5.addWidget(self.Transaction)
         self.verticalLayout_4.addWidget(self.BodyLayout)
@@ -530,6 +583,3 @@ class Ui_MainWindow(object):
         item = self.TransactionTable.horizontalHeaderItem(3)
         item.setText(_translate("MainWindow", "Transaction Date"))
         self.ViewTransaction.setText(_translate("MainWindow", "View"))
-        self.ModifyTransaction.setText(_translate("MainWindow", "Modify"))
-        self.DeleteTransaction.setText(_translate("MainWindow", "Delete"))
-
